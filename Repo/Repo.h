@@ -1,7 +1,7 @@
 #ifndef OOP_L5_REPO_H
 #define OOP_L5_REPO_H
 
-#include "Repository.h"
+#include "ScooterRepo.h"
 
 namespace repo {
     class Repository;

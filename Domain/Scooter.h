@@ -54,6 +54,10 @@ public:
     [[nodiscard]] Status getStatus() const;
 
     void setStatus(Status status);
+
+    bool operator==(const Scooter& other) const;
+
+    bool operator!=(const Scooter& other) const;
 };
 
 

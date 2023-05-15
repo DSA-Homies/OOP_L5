@@ -5,11 +5,11 @@
 
 Scooter::Scooter(string id, string model, time_t commissioningDate, float kilometer,
                  string location, Scooter::Status status) : id(std::move(id)), model(std::move(model)),
-                                                                   commissioningDate(commissioningDate),
-                                                                   kilometer(kilometer), location(std::move(location)),
-                                                                   status(status) {}
+                                                            commissioningDate(commissioningDate),
+                                                            kilometer(kilometer), location(std::move(location)),
+                                                            status(status) {}
 
-Scooter::Scooter(string id, string model, const string& commissioningDate, float kilometer,
+Scooter::Scooter(string id, string model, const string &commissioningDate, float kilometer,
                  string location, Scooter::Status status) : id(std::move(id)), model(std::move(model)),
                                                             commissioningDate(strToTime(commissioningDate)),
                                                             kilometer(kilometer), location(std::move(location)),
@@ -39,7 +39,7 @@ void Scooter::setCommissioningDate(time_t _commissioningDate) {
     this->commissioningDate = _commissioningDate;
 }
 
-void Scooter::setCommissioningDate(const string& _commissioningDate) {
+void Scooter::setCommissioningDate(const string &_commissioningDate) {
     this->commissioningDate = strToTime(_commissioningDate);
 }
 
@@ -65,4 +65,12 @@ Scooter::Status Scooter::getStatus() const {
 
 void Scooter::setStatus(Scooter::Status _status) {
     this->status = _status;
+}
+
+bool Scooter::operator==(const Scooter &other) const {
+    return id == other.id;
+}
+
+bool Scooter::operator!=(const Scooter &other) const {
+    return !(*this == other);
 }
