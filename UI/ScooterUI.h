@@ -3,7 +3,10 @@
 
 
 class ScooterUI {
+    friend class Widgets;
 
+private:
+    static const int MAX_LINE_WIDTH = 100;
 };
 
 

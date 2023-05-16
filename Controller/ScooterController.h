@@ -1,0 +1,10 @@
+#ifndef OOP_L5_SCOOTERCONTROLLER_H
+#define OOP_L5_SCOOTERCONTROLLER_H
+
+
+class ScooterController {
+
+};
+
+
+#endif //OOP_L5_SCOOTERCONTROLLER_H

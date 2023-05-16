@@ -74,3 +74,14 @@ bool Scooter::operator==(const Scooter &other) const {
 bool Scooter::operator!=(const Scooter &other) const {
     return !(*this == other);
 }
+
+string Scooter::toString() const {
+    return id + ' ' + model + ' ' + timeToStr(commissioningDate) + ' ' + to_string(kilometer) + ' ' + location + ' ' +
+           statusToString(status);
+}
+
+vector<string> Scooter::toList() const {
+    vector<string> details = {id, model, timeToStr(commissioningDate), to_string(kilometer), location,
+                              statusToString(status)};
+    return details;
+}
