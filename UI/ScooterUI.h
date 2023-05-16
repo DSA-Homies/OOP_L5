@@ -11,12 +11,12 @@ namespace ui {
         friend class Widgets;
 
     private:
-        shared_ptr<ctrl::ScooterController> controller;
         CustomerUI customerUI;
         ManagerUI managerUI;
 
     public:
-        ScooterUI();
+        explicit ScooterUI(const std::shared_ptr<ctrl::ScooterController> &_controller)
+                : customerUI(_controller), managerUI(_controller) {}
 
         void mainMenu() const {
             Widgets::printTitle("Bolt Scooters");
@@ -33,10 +33,12 @@ namespace ui {
                     break;
                 case 3:
                     cout << "App quitting..\n";
-                    return;
+                    exit(0);
                 default:
                     mainMenu();
             }
+
+            mainMenu();
         }
     };
 }

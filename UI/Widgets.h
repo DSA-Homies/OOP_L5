@@ -15,7 +15,7 @@ namespace ui {
         friend class ScooterUI;
 
     private:
-        static const int MAX_LINE_WIDTH = 100;
+        static const int MAX_LINE_WIDTH = 120;
 
         enum TitleStyle {
             TITLE_CHAR = '=',
@@ -87,7 +87,7 @@ namespace ui {
             if (lines.empty())
                 return;
 
-            vector<string> columnHeaders = {"Name", "Herkunft", "Haltbarkeitsdatum", "Menge", "preis"};
+            vector<string> columnHeaders = {"ID", "Model", "Date", "Kilometer", "Location", "Status"};
 
             if (columnHeaders.size() != lines[0].size())
                 throw invalid_argument(

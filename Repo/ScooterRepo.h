@@ -12,8 +12,14 @@ namespace repo {
     class ScooterRepo {
     private:
         vector<Scooter> scooterList;
+        Scooter myScooter{};
+
     public:
-        ScooterRepo();
+        [[nodiscard]] Scooter getMyScooter() const;
+
+        void setMyScooter(const Scooter &_myScooter);
+
+        explicit ScooterRepo(vector<Scooter> initList = {});
 
         void add(const Scooter &scooter);
 
@@ -22,6 +28,8 @@ namespace repo {
         void remove(int index);
 
         void update(int index, const Scooter &newScooter);
+
+        void updateStatus(int index, Status status);
 
         int getIndexOf(const Scooter &scooter);
 

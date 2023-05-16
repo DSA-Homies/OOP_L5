@@ -3,8 +3,8 @@
 
 using namespace repo;
 
-ScooterRepo::ScooterRepo() {
-
+ScooterRepo::ScooterRepo(vector<Scooter> initList) {
+    scooterList = std::move(initList);
 }
 
 /**
@@ -63,11 +63,23 @@ void ScooterRepo::update(int index, const Scooter &newScooter) {
 }
 
 /**
+ * Updates the status of a scooter object at a certain index
+ * @param index
+ * @param status
+ */
+void ScooterRepo::updateStatus(int index, Status status) {
+    if (index < 0 || index > scooterList.size())
+        throw out_of_range("ScooterRepo::updateStatus(): Index out of range for index " + to_string(index));
+
+    scooterList[index].setStatus(status);
+}
+
+/**
  * @return The index of the scooter if found, -1 otherwise
  * @param scooter The scooter to be searched for
  */
 int ScooterRepo::getIndexOf(const Scooter &scooter) {
-    auto it = find(scooterList.begin(), scooterList.end(), scooter);
+    auto it = std::find(scooterList.begin(), scooterList.end(), scooter);
     if (it != scooterList.end())
         return int(distance(scooterList.begin(), it));
 
@@ -85,3 +97,20 @@ Scooter ScooterRepo::getScooterAtIndex(int index) {
 
     return scooterList[index];
 }
+
+/**
+ * @brief getter for the current scooter that is being used by the user at the moment
+ * @return the scooter object that is being used by the user
+ */
+Scooter ScooterRepo::getMyScooter() const {
+    return myScooter;
+}
+
+/**
+ * @brief setter for the current scooter that is being used by the user at the moment
+ * @param _myScooter the current scooter that we want to set
+ */
+void ScooterRepo::setMyScooter(const Scooter &_myScooter) {
+    myScooter = _myScooter;
+}
+

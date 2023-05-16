@@ -45,3 +45,23 @@ static string toLower(string str) {
 
     return str;
 }
+
+
+/**
+ * Formats a float to a string with a given precision
+ * @param value
+ * @param precision
+ * @return
+ */
+static string formatFloat(float value, int precision) {
+    std::ostringstream stream;
+    stream << fixed << setprecision(precision) << value;
+    return stream.str();
+}
+
+static bool isDateFormatValid(const string& dateStr) {
+    tm date{};
+    istringstream ss(dateStr);
+    ss >> get_time(&date, "%d-%m-%Y");
+    return !ss.fail() && ss.eof();
+}

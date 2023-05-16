@@ -1,21 +1,21 @@
 #include "Scooter.h"
 
 #include <utility>
-#include "../Utils/Utils.h"
+#include "../Utils/utils.h"
 
 using namespace domain;
 
 Scooter::Scooter(string id, string model, time_t commissioningDate, float kilometer,
-                 string location, Scooter::Status status) : id(std::move(id)), model(std::move(model)),
-                                                            commissioningDate(commissioningDate),
-                                                            kilometer(kilometer), location(std::move(location)),
-                                                            status(status) {}
+                 string location, Status status) : id(std::move(id)), model(std::move(model)),
+                                                   commissioningDate(commissioningDate),
+                                                   kilometer(kilometer), location(std::move(location)),
+                                                   status(status) {}
 
 Scooter::Scooter(string id, string model, const string &commissioningDate, float kilometer,
-                 string location, Scooter::Status status) : id(std::move(id)), model(std::move(model)),
-                                                            commissioningDate(strToTime(commissioningDate)),
-                                                            kilometer(kilometer), location(std::move(location)),
-                                                            status(status) {}
+                 string location, Status status) : id(std::move(id)), model(std::move(model)),
+                                                   commissioningDate(strToTime(commissioningDate)),
+                                                   kilometer(kilometer), location(std::move(location)),
+                                                   status(status) {}
 
 const string &Scooter::getId() const {
     return id;
@@ -61,11 +61,11 @@ void Scooter::setLocation(const string &_location) {
     this->location = _location;
 }
 
-Scooter::Status Scooter::getStatus() const {
+Status Scooter::getStatus() const {
     return status;
 }
 
-void Scooter::setStatus(Scooter::Status _status) {
+void Scooter::setStatus(Status _status) {
     this->status = _status;
 }
 
@@ -78,12 +78,13 @@ bool Scooter::operator!=(const Scooter &other) const {
 }
 
 string Scooter::toString() const {
-    return id + ' ' + model + ' ' + timeToStr(commissioningDate) + ' ' + to_string(kilometer) + ' ' + location + ' ' +
-           statusToString(status);
+    return id + ' ' + model + ' ' + timeToStr(commissioningDate) + ' ' + formatFloat(kilometer, 1) + ' ' + location +
+           ' ' +
+           statusToStr(status);
 }
 
 vector<string> Scooter::toList() const {
-    vector<string> details = {id, model, timeToStr(commissioningDate), to_string(kilometer), location,
-                              statusToString(status)};
+    vector<string> details = {id, model, timeToStr(commissioningDate), formatFloat(kilometer, 1), location,
+                              statusToStr(status)};
     return details;
 }
