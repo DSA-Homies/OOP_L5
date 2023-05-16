@@ -3,6 +3,8 @@
 #include <utility>
 #include "../Utils/Utils.h"
 
+using namespace domain;
+
 Scooter::Scooter(string id, string model, time_t commissioningDate, float kilometer,
                  string location, Scooter::Status status) : id(std::move(id)), model(std::move(model)),
                                                             commissioningDate(commissioningDate),

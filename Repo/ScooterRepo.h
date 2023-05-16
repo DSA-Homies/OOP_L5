@@ -5,27 +5,30 @@
 #include "../Domain/Scooter.h"
 
 using namespace std;
+using namespace domain;
 
-class ScooterRepo {
-private:
-    vector<Scooter> scooterList;
-public:
-    ScooterRepo();
+namespace repo {
 
-    void add(const Scooter &scooter);
+    class ScooterRepo {
+    private:
+        vector<Scooter> scooterList;
+    public:
+        ScooterRepo();
 
-    bool remove(const Scooter &scooter);
+        void add(const Scooter &scooter);
 
-    void remove(int index);
+        bool remove(const Scooter &scooter);
 
-    void update(int index, const Scooter &newScooter);
+        void remove(int index);
 
-    int getIndexOf(const Scooter &scooter);
+        void update(int index, const Scooter &newScooter);
 
-    Scooter getScooterAtIndex(int index);
+        int getIndexOf(const Scooter &scooter);
 
-    vector<Scooter> getAll();
-};
+        Scooter getScooterAtIndex(int index);
 
+        vector<Scooter> getAll();
+    };
+}
 
 #endif //OOP_L5_SCOOTERREPO_H

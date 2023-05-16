@@ -1,6 +1,8 @@
 #include <stdexcept>
 #include "ScooterRepo.h"
 
+using namespace repo;
+
 ScooterRepo::ScooterRepo() {
 
 }
