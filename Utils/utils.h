@@ -59,7 +59,13 @@ static string formatFloat(float value, int precision) {
     return stream.str();
 }
 
-static bool isDateFormatValid(const string& dateStr) {
+
+/**
+ * Checks if a string has the correct Date format
+ * @param dateStr
+ * @return
+ */
+static bool isDateFormatValid(const string &dateStr) {
     tm date{};
     istringstream ss(dateStr);
     ss >> get_time(&date, "%d-%m-%Y");
